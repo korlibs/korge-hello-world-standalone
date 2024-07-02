@@ -32,9 +32,9 @@ IF NOT EXIST "%JAVA%" (
     DEL "%KORGEDIR%\jre-21.tar.xz.sha256" > NUL 2> NUL
 )
 
-"%JAVA%" -jar "%INSTALLER_LOCAL_FILE%" %*
+"%JAVA%" -jar "%INSTALLER_LOCAL_FILE%" %* & set SAVEDRC=!ERRORLEVEL! & call;
 
-EXIT /B
+EXIT /B %SAVEDRC%
 
 :DOWNLOAD_FILE
     SET URL=%~1
